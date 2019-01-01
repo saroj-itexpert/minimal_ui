@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 SizedBox(width: 25.0),
-                listItem('assets/images/a.jpg', 'Rose', true),
+                listItem('assets/images/a.jpeg', 'Rose', true),
                 SizedBox(width: 25.0),
                 listItem('assets/images/b.jpg', 'Fatima', false),
                 SizedBox(width: 25.0),
