@@ -96,6 +96,37 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget firstStyleRow(String imgPath1, String imgPath2, String avatarImg){
+    return Container(
+      height: 250.0,
+      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+      child: Row(
+        children: <Widget>[
+          Container(
+            height: 250.0,
+            width: (MediaQuery.of(context).size.width - 30.0) / 2,  //need two component
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 125.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      image: AssetImage(imgPath1),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.0,),
+                
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget listItem(String imgPath, String name, bool available) {
     return Column(
       children: <Widget>[
