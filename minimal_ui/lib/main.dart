@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         fontFamily: 'Oxygen',
                         fontWeight: FontWeight.w600,
-                        color: Colors.black,
+                       
                       ),
                     ),
                   ],
