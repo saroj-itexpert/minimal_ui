@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyHomePage());
+void main() => runApp(MaterialApp(
+  debugShowCheckedModeBanner: false,
+  title: "Minimal UI",
+  home: MyHomePage(),
+));
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -12,11 +16,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         elevation: 0.0,
         title: Text('EXPLORE',
         style: TextStyle(
-          fontFamily: 'Montserrat',
-          fontSize: 15.0,
+          fontFamily: 'Oxygen',
+          fontSize: 20.0,
           color: Colors.black,
         ),
         ),
@@ -24,15 +29,35 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: IconButton(
           icon: Icon(Icons.menu),
           color: Colors.black,
-          iconSize: 17.0,
+          iconSize: 20.0,
           onPressed: (){},
         ),
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            color: Colors.black,
+            iconSize: 20.0,
+            onPressed: (){},
+          )
 
         ],
       ),
 
-      body: Container(
+      body: ListView(
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        children: <Widget>[
+          Container(
+            height: 125.0,
+            width: double.infinity,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.all(10.0),
+              children: <Widget>[
+                
+              ],
+            ),
+          )
+        ],
 
       ),
       
