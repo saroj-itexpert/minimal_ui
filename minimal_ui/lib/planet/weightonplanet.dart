@@ -7,11 +7,35 @@ class WeightOnPlanet extends StatefulWidget {
 
 class _WeightOnPlanetState extends State<WeightOnPlanet> {
   int radioValue = 0;
+  double _finalResult = 0.0;
+  final TextEditingController _weightController = new TextEditingController();
+  String _formattedText = "";
 
   void handleRadioValueChange(int value) {
     setState(() {
       radioValue = value;
       print(radioValue);
+
+      switch (value) {
+        case 0: //PLUTO
+          _finalResult = calculateWeight(_weightController.text, 0.06);
+          _formattedText =
+              "Your weight on Pluto is ${_finalResult.toStringAsFixed(1)}";
+          break;
+        case 1:
+          _finalResult = calculateWeight(_weightController.text, 0.38);
+          _formattedText =
+              "Your weight on Mars is ${_finalResult.toStringAsFixed(1)}";
+
+          break;
+
+        case 2:
+          _finalResult = calculateWeight(_weightController.text, 0.91);
+          _formattedText =
+              "Your weight on Venus is ${_finalResult.toStringAsFixed(1)}";
+
+          break;
+      }
     });
   }
 
@@ -40,7 +64,7 @@ class _WeightOnPlanetState extends State<WeightOnPlanet> {
               child: Column(
                 children: <Widget>[
                   TextField(
-                    controller: null,
+                    controller: _weightController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: "Your Weight on Earth",
@@ -63,10 +87,9 @@ class _WeightOnPlanetState extends State<WeightOnPlanet> {
                       Text(
                         "Pluto",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Oxygen',
-                          fontWeight: FontWeight.w500
-                        ),
+                            color: Colors.white,
+                            fontFamily: 'Oxygen',
+                            fontWeight: FontWeight.w500),
                       ),
                       Radio<int>(
                         activeColor: Colors.green,
@@ -77,10 +100,9 @@ class _WeightOnPlanetState extends State<WeightOnPlanet> {
                       Text(
                         "Mars",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Oxygen',
-                          fontWeight: FontWeight.w500
-                        ),
+                            color: Colors.white,
+                            fontFamily: 'Oxygen',
+                            fontWeight: FontWeight.w500),
                       ),
                       Radio<int>(
                         activeColor: Colors.red,
@@ -91,23 +113,25 @@ class _WeightOnPlanetState extends State<WeightOnPlanet> {
                       Text(
                         "Venus",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Oxygen',
-                          fontWeight: FontWeight.w500
-                        ),
+                            color: Colors.white,
+                            fontFamily: 'Oxygen',
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
                   SizedBox(height: 20.0),
 
                   //RESUT TEXT:
-                  Text("Result ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30.0,
-                    fontFamily: 'Oxygen',
-                    fontWeight: FontWeight.bold
-                  ),)
+                  Text(
+                    _weightController.text.isEmpty ? "Please Enter Your Weight!":
+                                        "$_formattedText " + " kg",
+
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30.0,
+                        fontFamily: 'Oxygen',
+                        fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
@@ -115,5 +139,14 @@ class _WeightOnPlanetState extends State<WeightOnPlanet> {
         ),
       ),
     );
+  }
+
+  double calculateWeight(String weight, double gravityOfPlanet) {
+    if (int.parse(weight).toString().isNotEmpty && int.parse(weight) > 0) {
+      return int.parse(weight) * gravityOfPlanet;
+    } else {
+      print("Wrong!");
+      return int.parse("180") * 0.38;
+    }
   }
 }
