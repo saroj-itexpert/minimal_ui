@@ -13,6 +13,8 @@ class _BMICalculatorState extends State<BMICalculator> {
 
   double inches = 0.0;
   double result = 0.0;
+  String _finalResult = "";
+  String _resultReading = "";
 
 
   void calculateBMI() {
@@ -22,15 +24,40 @@ class _BMICalculatorState extends State<BMICalculator> {
           double weight =  double.parse(_weightController.text);
           double height =  double.parse(_heightController.text);
           inches = height * 12; //converting feet to inches
+          double kg = weight * 2.20462262185;
 
           if((_ageController.text.isNotEmpty || age>0) 
           &&((_heightController.text.isNotEmpty || inches >0)
-          &&(_weightController.text.isNotEmpty || weight > 0))){
-            result = weight / (inches * inches) * 703;
+          &&(_weightController.text.isNotEmpty || kg > 0))){
+            result = kg / (inches * inches) * 703;
+
+            if(double.parse(result.toStringAsFixed(1))< 18.5){
+              _resultReading = "Underweight";
+              print(_resultReading);
+
+            }else if(double.parse(result.toStringAsFixed(1)) >= 18.5 
+              && result < 25
+             ){
+               _resultReading = "Great Physique";
+               print(_resultReading);
+             }else if(double.parse(result.toStringAsFixed(1)) >= 25 
+              && result < 30
+             ){
+               _resultReading = "Overweight";
+               print(_resultReading);
+             }else if(double.parse(result.toStringAsFixed(1)) >= 30){
+               _resultReading = "Obese";
+               print(_resultReading);
+             }
+
+          }else{
+            result = 0.0;
           }
 
           
         });
+
+        _finalResult = "YOUR BMI: ${result.toStringAsFixed(1)}";
   }
 
   @override
@@ -105,14 +132,14 @@ class _BMICalculatorState extends State<BMICalculator> {
           ),
           Center(
             child: Text(
-              "YOUR BMI IS: ${result.toStringAsFixed(2)} ",
+              "YOUR BMI IS: $_finalResult ",
               style: TextStyle(
                   fontFamily: 'Oxygen', fontSize: 25.0, color: Colors.black),
             ),
           ),
           Center(
             child: Text(
-              "OVERWEIGHT ",
+              "$_resultReading ",
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Oxygen',
