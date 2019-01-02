@@ -75,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         fontFamily: 'Oxygen',
                         fontWeight: FontWeight.w600,
-                       
                       ),
                     ),
                   ],
@@ -90,13 +89,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 listItem('assets/images/d.jpg', 'Saroj', false),
               ],
             ),
-          )
+          ),
+
+          SizedBox(
+            height: 15.0,
+          ),
+          firstStyleRow('assets/images/b.jpg','assets/images/c.jpg', 'assets/images/d.jpg'),
         ],
       ),
     );
   }
 
-  Widget firstStyleRow(String imgPath1, String imgPath2, String avatarImg){
+  Widget firstStyleRow(String imgPath1, String imgPath2, String avatarImg) {
     return Container(
       height: 250.0,
       padding: EdgeInsets.only(left: 10.0, right: 10.0),
@@ -104,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Container(
             height: 250.0,
-            width: (MediaQuery.of(context).size.width - 30.0) / 2,  //need two component
+            width: (MediaQuery.of(context).size.width - 30.0)/2, //need two component
             child: Column(
               children: <Widget>[
                 Container(
@@ -117,11 +121,74 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15.0,),
-                
+                SizedBox(
+                  height: 15.0,
+                ),
+                Text(
+                  'I like the way to place Items to show more...',
+                  style: TextStyle(
+                    fontFamily: 'Oxygen',
+                  ),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      height: 30.0,
+                      width: 30.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        image: DecorationImage(
+                          image: AssetImage(avatarImg),
+                          fit: BoxFit.cover,
+                        )
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Mona Hall',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: 'Oxygen', color: Colors.orange
+                          ),
+                        ),
+                        Text(
+                          '10:51PM',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: 'Oxygen',
+                            color: Colors.grey
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
+          SizedBox(
+            width: 10.0,
+          ),
+          Container(
+            height: 250.0,
+            width: (MediaQuery.of(context).size.width-30.0)/2,
+            child: Container(
+              height: 250.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                image: DecorationImage(
+                  image: AssetImage(imgPath2),
+                  fit: BoxFit.cover
+                )
+              ),
+            ),
+          )
         ],
       ),
     );
