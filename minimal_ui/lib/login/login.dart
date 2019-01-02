@@ -48,7 +48,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: <Widget>[
               Image.asset(
-                'assets/images/face.png',
+                'assets/images/face.png'  ,
                 width: 80.0,
                 height: 80.0,
                 color: Colors.lightGreen,

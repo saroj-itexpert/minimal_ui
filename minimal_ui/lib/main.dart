@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './login/login.dart';
+import './planet/weightonplanet.dart';
 
 void main() {
   var title = "Login UI";
@@ -8,7 +8,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
-      home: Login(),
+      home: WeightOnPlanet(),
     ),
   );
 }
